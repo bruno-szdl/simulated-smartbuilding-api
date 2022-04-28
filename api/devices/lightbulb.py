@@ -43,10 +43,8 @@ class Lightbulb:
             , endpoint='setColorLightbulb'+str(number)
         )
         def setColor():
-            if not request.json:
-                abort(400)
-            if self.color == True:
-                self.lightbulb_dict['color'] = request.json['color']
+            if self.color:
+                self.lightbulb_color['color'] = request.json['color']
                 return jsonify(self.lightbulb_color)
             else:
                 return
