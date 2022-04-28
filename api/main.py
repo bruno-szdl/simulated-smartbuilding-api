@@ -17,6 +17,6 @@ Lightbulb(app=smartbuilding_app, room='workingroom', number=4, color=False)
 SmartTv(app=smartbuilding_app, room='meetingroom', number=1)
 
 #Init window blinder
-SmartTv(app=smartbuilding_app, room='meetingroom')
+WindowBlinder(app=smartbuilding_app, room='meetingroom', number=1)
 
 smartbuilding_app.run(host="0.0.0.0")
