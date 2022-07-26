@@ -5,30 +5,24 @@ class SmartTv:
     def __init__(self, app, room, number):
 
         #define atr
-        smarttv_state = {}
-        smarttv_channel = {}
-        smarttv_state['state'] = 'off'
-        smarttv_channel['channel'] = 0
+        self.smarttv_state = bool(False)
+        self.smarttv_channel = 0
 
         #Turn on
         @app.route(
-            '/smartbuilding/rooms/'+room+'/artifacts/smarttv'+str(number)+'/turnOn/'
+            '/smartbuilding/rooms/'+room+'/artifacts/smarttv'+str(number)+'/toogle/'
             , methods=['PUT']
-            , endpoint='turnOnsmarttv'+str(number)
+            , endpoint='toggleSmartTv'+str(number)
         )
         def turnOn():
-            smarttv_state['state'] = 'on'
-            return jsonify(smarttv_state)
-
-        #Turn off
-        @app.route(
-            '/smartbuilding/rooms/'+room+'/artifacts/smarttv'+str(number)+'/turnOff/'
-            , methods=['PUT']
-            , endpoint='turnOffsmarttv'+str(number)
-        )
-        def turnOff():
-            smarttv_state['state'] = 'off'
-            return jsonify(smarttv_state)
+            json_data = request.json
+            state = json_data.get('state')
+            if state == True:
+                self.smarttv_state = True
+                return jsonify(state=True)
+            elif state == False:
+                self.smarttv_state = False
+                return jsonify(state=False)
 
         #Set channel
         @app.route(
@@ -37,8 +31,8 @@ class SmartTv:
             , endpoint='setColorsmarttv'+str(number)
         )
         def setChannel():
-            smarttv_channel['channel'] = request.json['channel']
-            return jsonify(smarttv_channel)
+            self.smarttv_channel = request.json['channel']
+            return jsonify(channel=self.smarttv_channel)
 
         #Get state
         @app.route(
@@ -47,7 +41,7 @@ class SmartTv:
             , endpoint='getStatesmarttv'+str(number)
         )
         def getState():
-            return jsonify(smarttv_state)
+            return jsonify(state=self.smarttv_state)
 
         #Get channel
         @app.route(
@@ -56,4 +50,4 @@ class SmartTv:
             , endpoint='getColorsmarttv'+str(number)
         )
         def getChannel():
-            return jsonify(smarttv_channel)
+            return jsonify(channel=self.smarttv_channel)

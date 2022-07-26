@@ -19,4 +19,4 @@ SmartTv(app=smartbuilding_app, room='meetingroom', number=1)
 #Init window blinder
 WindowBlinder(app=smartbuilding_app, room='meetingroom', number=1)
 
-smartbuilding_app.run(host="0.0.0.0")
+smartbuilding_app.run(debug=True, host="0.0.0.0")

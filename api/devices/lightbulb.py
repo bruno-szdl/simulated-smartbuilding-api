@@ -5,32 +5,26 @@ class Lightbulb:
     def __init__(self, app, room, number, color):
 
         #define atr
-        lightbulb_state = {}
-        lightbulb_state['state'] = 'off'
+        self.lightbulb_state = bool(False)
 
         if color:
-            lightbulb_color = {}
-            lightbulb_color['color'] = 'white'
+            self.lightbulb_color = 'white'
 
-        #Switch on
+        #toggle
         @app.route(
-            '/smartbuilding/rooms/'+room+'/artifacts/lightbulb'+str(number)+'/switchOn/'
+            '/smartbuilding/rooms/'+room+'/artifacts/lightbulb'+str(number)+'/toggle/'
             , methods=['PUT']
-            , endpoint='switchOnLightbulb'+str(number)
+            , endpoint='toggleLightbulb'+str(number)
         )
-        def switchOn():
-            lightbulb_state['state'] = 'on'
-            return jsonify(lightbulb_state)
-
-        #Switch off
-        @app.route(
-            '/smartbuilding/rooms/'+room+'/artifacts/lightbulb'+str(number)+'/switchOff/'
-            , methods=['PUT']
-            , endpoint='switchOffLightbulb'+str(number)
-        )
-        def switchOff():
-            lightbulb_state['state'] = 'off'
-            return jsonify(lightbulb_state)
+        def toggle():
+            json_data = request.json
+            state = json_data.get('state')
+            if state == True:
+                self.lightbulb_state = True
+                return jsonify(state=True)
+            elif state == False:
+                self.lightbulb_state = False
+                return jsonify(state=False)
 
         #Set color
         @app.route(
@@ -40,8 +34,8 @@ class Lightbulb:
         )
         def setColor():
             if color:
-                lightbulb_color['color'] = request.json['color']
-                return jsonify(lightbulb_color)
+                self.lightbulb_color = request.json['color']
+                return jsonify(color=self.lightbulb_color)
             else:
                 return
 
@@ -52,7 +46,7 @@ class Lightbulb:
             , endpoint='getStateLightbulb'+str(number)
         )
         def getState():
-            return jsonify(lightbulb_state)
+            return jsonify(state=self.lightbulb_state)
 
         #Get color
         @app.route(
@@ -61,4 +55,4 @@ class Lightbulb:
             , endpoint='getColorLightbulb'+str(number)
         )
         def getColor():
-            return jsonify(lightbulb_color)
+            return jsonify(color=self.lightbulb_color)
