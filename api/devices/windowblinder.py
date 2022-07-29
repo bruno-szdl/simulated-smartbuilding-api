@@ -9,26 +9,25 @@ class WindowBlinder:
 
         #Set state
         @app.route(
-            '/smartbuilding/rooms/'+room+'/artifacts/windowblinder'+str(number)+'/state/'
+            '/smartbuilding/workspaces/'+room+'/artifacts/windowblinder'+str(number)+'/state/'
             , methods=['PUT']
             , endpoint='openwindowblinder'+str(number)
         )
-        def open():
-            def toggle():
-                json_data = request.json
-                state = json_data.get('state')
-                if state == True:
-                    self.windowblinder_state = True
-                    return jsonify(state=True)
-                elif state == False:
-                    self.windowblinder_state = False
-                    return jsonify(state=False)
+        def setState():
+            json_data = request.json
+            state = json_data.get('state')
+            if state == 'open':
+                self.windowblinder_state = 'open'
+                return jsonify(state='open')
+            elif state == 'closed':
+                self.windowblinder_state = 'closed'
+                return jsonify(state='closed')
 
         #Get state
         @app.route(
-            '/smartbuilding/rooms/'+room+'/artifacts/windowblinder'+str(number)+'/state/'
+            '/smartbuilding/workspaces/'+room+'/artifacts/windowblinder'+str(number)+'/state/'
             , methods=['GET']
             , endpoint='getStatewindowblinder'+str(number)
         )
         def getState():
-            return jsonify(self.windowblinder_state)
+            return jsonify(state=self.windowblinder_state)

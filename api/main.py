@@ -20,3 +20,6 @@ SmartTv(app=smartbuilding_app, room='meetingroom', number=1)
 WindowBlinder(app=smartbuilding_app, room='meetingroom', number=1)
 
 smartbuilding_app.run(debug=True, host="0.0.0.0")
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', threaded=True)

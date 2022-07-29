@@ -8,13 +8,13 @@ class SmartTv:
         self.smarttv_state = bool(False)
         self.smarttv_channel = 0
 
-        #Turn on
+        #Set state
         @app.route(
-            '/smartbuilding/rooms/'+room+'/artifacts/smarttv'+str(number)+'/toogle/'
+            '/smartbuilding/workspaces/'+room+'/artifacts/smarttv'+str(number)+'/toggle/'
             , methods=['PUT']
             , endpoint='toggleSmartTv'+str(number)
         )
-        def turnOn():
+        def setState():
             json_data = request.json
             state = json_data.get('state')
             if state == True:
@@ -26,7 +26,7 @@ class SmartTv:
 
         #Set channel
         @app.route(
-            '/smartbuilding/rooms/'+room+'/artifacts/smarttv'+str(number)+'/channel/'
+            '/smartbuilding/workspaces/'+room+'/artifacts/smarttv'+str(number)+'/channel/'
             , methods=['PUT']
             , endpoint='setColorsmarttv'+str(number)
         )
@@ -36,7 +36,7 @@ class SmartTv:
 
         #Get state
         @app.route(
-            '/smartbuilding/rooms/'+room+'/artifacts/smarttv'+str(number)+'/state/'
+            '/smartbuilding/workspaces/'+room+'/artifacts/smarttv'+str(number)+'/state/'
             , methods=['GET']
             , endpoint='getStatesmarttv'+str(number)
         )
@@ -45,7 +45,7 @@ class SmartTv:
 
         #Get channel
         @app.route(
-            '/smartbuilding/rooms/'+room+'/artifacts/smarttv'+str(number)+'/channel/'
+            '/smartbuilding/workspaces/'+room+'/artifacts/smarttv'+str(number)+'/channel/'
             , methods=['GET']
             , endpoint='getColorsmarttv'+str(number)
         )
