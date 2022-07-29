@@ -12,7 +12,7 @@ class Lightbulb:
 
         #toggle
         @app.route(
-            '/smartbuilding/workspaces/'+room+'/artifacts/lightbulb'+str(number)+'/toggle/'
+            '/environments/smartbuilding/workspaces/'+room+'/artifacts/lightbulb'+str(number)+'/toggle/'
             , methods=['PUT']
             , endpoint='toggleLightbulb'+str(number)
         )
@@ -28,7 +28,7 @@ class Lightbulb:
 
         #Set color
         @app.route(
-            '/smartbuilding/workspaces/'+room+'/artifacts/lightbulb'+str(number)+'/color/'
+            '/environments/smartbuilding/workspaces/'+room+'/artifacts/lightbulb'+str(number)+'/color/'
             , methods=['PUT']
             , endpoint='setColorLightbulb'+str(number)
         )
@@ -41,7 +41,7 @@ class Lightbulb:
 
         #Get state
         @app.route(
-            '/smartbuilding/workspaces/'+room+'/artifacts/lightbulb'+str(number)+'/state/'
+            '/environments/smartbuilding/workspaces/'+room+'/artifacts/lightbulb'+str(number)+'/state/'
             , methods=['GET']
             , endpoint='getStateLightbulb'+str(number)
         )
@@ -50,7 +50,7 @@ class Lightbulb:
 
         #Get color
         @app.route(
-            '/smartbuilding/workspaces/'+room+'/artifacts/lightbulb'+str(number)+'/color/'
+            '/environments/smartbuilding/workspaces/'+room+'/artifacts/lightbulb'+str(number)+'/color/'
             , methods=['GET']
             , endpoint='getColorLightbulb'+str(number)
         )

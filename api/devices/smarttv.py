@@ -10,7 +10,7 @@ class SmartTv:
 
         #Set state
         @app.route(
-            '/smartbuilding/workspaces/'+room+'/artifacts/smarttv'+str(number)+'/toggle/'
+            '/environments/smartbuilding/workspaces/'+room+'/artifacts/smarttv'+str(number)+'/toggle/'
             , methods=['PUT']
             , endpoint='toggleSmartTv'+str(number)
         )
@@ -26,7 +26,7 @@ class SmartTv:
 
         #Set channel
         @app.route(
-            '/smartbuilding/workspaces/'+room+'/artifacts/smarttv'+str(number)+'/channel/'
+            '/environments/smartbuilding/workspaces/'+room+'/artifacts/smarttv'+str(number)+'/channel/'
             , methods=['PUT']
             , endpoint='setColorsmarttv'+str(number)
         )
@@ -36,7 +36,7 @@ class SmartTv:
 
         #Get state
         @app.route(
-            '/smartbuilding/workspaces/'+room+'/artifacts/smarttv'+str(number)+'/state/'
+            '/environments/smartbuilding/workspaces/'+room+'/artifacts/smarttv'+str(number)+'/state/'
             , methods=['GET']
             , endpoint='getStatesmarttv'+str(number)
         )
@@ -45,7 +45,7 @@ class SmartTv:
 
         #Get channel
         @app.route(
-            '/smartbuilding/workspaces/'+room+'/artifacts/smarttv'+str(number)+'/channel/'
+            '/environments/smartbuilding/workspaces/'+room+'/artifacts/smarttv'+str(number)+'/channel/'
             , methods=['GET']
             , endpoint='getColorsmarttv'+str(number)
         )

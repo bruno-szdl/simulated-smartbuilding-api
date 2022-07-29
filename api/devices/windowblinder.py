@@ -9,7 +9,7 @@ class WindowBlinder:
 
         #Set state
         @app.route(
-            '/smartbuilding/workspaces/'+room+'/artifacts/windowblinder'+str(number)+'/state/'
+            '/environments/smartbuilding/workspaces/'+room+'/artifacts/windowblinder'+str(number)+'/state/'
             , methods=['PUT']
             , endpoint='openwindowblinder'+str(number)
         )
@@ -25,7 +25,7 @@ class WindowBlinder:
 
         #Get state
         @app.route(
-            '/smartbuilding/workspaces/'+room+'/artifacts/windowblinder'+str(number)+'/state/'
+            '/environments/smartbuilding/workspaces/'+room+'/artifacts/windowblinder'+str(number)+'/state/'
             , methods=['GET']
             , endpoint='getStatewindowblinder'+str(number)
         )
